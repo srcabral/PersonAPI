@@ -4,6 +4,7 @@ package br.com.srcabral.personapi.controller;
 import br.com.srcabral.personapi.dto.request.PersonDTO;
 import br.com.srcabral.personapi.dto.response.MessageResponseDTO;
 import br.com.srcabral.personapi.entity.Person;
+import br.com.srcabral.personapi.exception.PersonNotFoundException;
 import br.com.srcabral.personapi.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,5 +34,10 @@ public class PersonController {
     @GetMapping
     public List<PersonDTO> listAll(){
         return personService.listall();
+    }
+
+    @GetMapping("/{id}")
+    public PersonDTO findById(@PathVariable Long id) throws PersonNotFoundException {
+        return personService.findById(id);
     }
 }
