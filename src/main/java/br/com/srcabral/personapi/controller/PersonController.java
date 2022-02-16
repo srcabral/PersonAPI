@@ -3,14 +3,12 @@ package br.com.srcabral.personapi.controller;
 
 import br.com.srcabral.personapi.dto.request.PersonDTO;
 import br.com.srcabral.personapi.dto.response.MessageResponseDTO;
-import br.com.srcabral.personapi.entity.Person;
 import br.com.srcabral.personapi.exception.PersonNotFoundException;
 import br.com.srcabral.personapi.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -39,6 +37,11 @@ public class PersonController {
     @GetMapping("/{id}")
     public PersonDTO findById(@PathVariable Long id) throws PersonNotFoundException {
         return personService.findById(id);
+    }
+
+    @PutMapping("/{id}")
+    public MessageResponseDTO updateById(@PathVariable Long id, @RequestBody PersonDTO personDTO) throws PersonNotFoundException{
+        return personService.updateByid(id, personDTO);
     }
 
     @DeleteMapping("/{id}")
