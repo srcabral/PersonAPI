@@ -1,4 +1,4 @@
-package br.com.srcabral.personapi.dto;
+package br.com.srcabral.personapi.dto.response;
 
 
 import lombok.Builder;
